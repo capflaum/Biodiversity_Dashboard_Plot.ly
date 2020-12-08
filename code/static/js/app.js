@@ -1,17 +1,3 @@
-// Event Changing
-d3.select("#selDataset").on("change", nameInput);
-
-function nameInput() {
-    d3.json(`./samples.json`).then(function(sampleData){
-        var names = sampleData.names;
-        var menu = d3.selectAll("#selDataset");
-        //names.map(function(option){
-        for (i = 0; i < names.length; i++) {
-            menu.append("option").text(names[i]).property("value", names[i]);
-        };
-    });
-};
-nameInput();
 
 // d3.json("samples.json").then(function(sampleData){
 //     var samples = sampleData.samples;
@@ -21,9 +7,8 @@ nameInput();
 //             console.log(topOtus);
 //             });
 //         });
-d3.select("#selDataset").on("change", updatePlotly);
 
-function updatePlotly () {
+function updatePlotly() {
     d3.json(`./samples.json`).then(function(sampleData){
         var samples = sampleData.samples;
         values = [];
@@ -62,10 +47,25 @@ function updatePlotly () {
     };
 
     Plotly.newPlot("bar", data, layout);
-    
     });
 };
+// Event Changing
+d3.select("#selDataset").on("change", nameInput);
 
-updatePlotly ();
+function nameInput() {
+    d3.json(`./samples.json`).then(function(sampleData){
+        var names = sampleData.names;
+        var menu = d3.selectAll("#selDataset");
+        //names.map(function(option){
+        for (i = 0; i < names.length; i++) {
+            menu.append("option").text(names[i]).property("value", names[i]);
+        };
+    });
+};
+nameInput();
 
+d3.select("#selDataset").on("change", updatePlotly);
+
+updatePlotly();
+  
 
