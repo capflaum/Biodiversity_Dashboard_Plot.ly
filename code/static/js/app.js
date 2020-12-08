@@ -1,3 +1,18 @@
+// Event Changing
+d3.select("#selDataset").on("change", nameInput);
+
+function nameInput() {
+    d3.json(`./samples.json`).then(function(sampleData){
+        var names = sampleData.names;
+        var menu = d3.selectAll("#selDataset");
+        //names.map(function(option){
+        for (i = 0; i < names.length; i++) {
+            menu.append("option").text(names[i]).property("value", names[i]);
+        };
+    });
+};
+nameInput();
+
 // d3.json("samples.json").then(function(sampleData){
 //     var samples = sampleData.samples;
 //         Object.entries(samples).forEach(([d, i]) => {
@@ -6,26 +21,31 @@
 //             console.log(topOtus);
 //             });
 //         });
+d3.select("#selDataset").on("change", updatePlotly);
 
-function buildPlot () {
+function updatePlotly () {
     d3.json(`./samples.json`).then(function(sampleData){
         var samples = sampleData.samples;
+        values = [];
+        labels = [];
+        hovertext = [];
         for(i=0; i<10; i++){
             var tenSamples = samples[i];
             var otuIds = tenSamples.otu_ids[i];
-            var values = tenSamples.sample_values[i];
-            
+            labels.push(otuIds);
+            var value = tenSamples.sample_values[i];
+            values.push(value);
+            var otuLabels = tenSamples.otu_labels[i];
+            hovertext.push(otuLabels);
             // console.log(tenSamples);
             // console.log(otuIds);
-            // console.log(values);
-            
-            
+            // console.log(labels);
         };
 
     var trace1 = {
         values: values,
-        labels: otuIds,
-        hovertext: tenSamples.otu_labels,
+        labels: labels,
+        hovertext: hovertext,
         
         orientation: "h",
         type: "bar",
@@ -46,27 +66,6 @@ function buildPlot () {
     });
 };
 
-buildPlot ();
+updatePlotly ();
 
-// Event Changing
 
-function nameInput() {
-    d3.json(`./samples.json`).then(function(sampleData){
-        var names = sampleData.names;
-        var menu = d3.selectAll("#selDataset");
-        var nameChoice = menu.append("option");
-
-        //names.map(function(option){
-        for (i = 0; i < names.length; i++) {
-            option = menu.append("option");
-            option.append("option").text(names[i]);
-        };
-    });
-};
-nameInput();
-
-d3.selectAll("#selDataset").on("change", updatePlotly);
-
-function updatePlotly() {
-
-};
