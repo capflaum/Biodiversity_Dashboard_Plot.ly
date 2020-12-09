@@ -8,7 +8,7 @@
 //             });
 //         });
 
-function updatePlotly() {
+function buildPlot() {
     d3.json(`./samples.json`).then(function(sampleData){
         var samples = sampleData.samples;
         values = [];
@@ -60,12 +60,18 @@ function nameInput() {
         for (i = 0; i < names.length; i++) {
             menu.append("option").text(names[i]).property("value", names[i]);
         };
+        const firstUto = names[0];
+        buildPlot(firstUto);
     });
 };
 nameInput();
 
 d3.select("#selDataset").on("change", updatePlotly);
 
-updatePlotly();
+function updatePlotly() {
+
+}
+
+buildPlot();
   
 
