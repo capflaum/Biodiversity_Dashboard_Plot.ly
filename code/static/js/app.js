@@ -60,8 +60,8 @@ function nameInput() {
         for (i = 0; i < names.length; i++) {
             menu.append("option").text(names[i]).property("value", names[i]);
         };
-        const firstUto = names[0];
-        buildPlot(firstUto);
+        const firstOtu = names[0];
+        buildPlot(firstOtu);
     });
 };
 nameInput();
