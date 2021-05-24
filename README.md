@@ -12,4 +12,4 @@ Using the D3 library to read in `samples.json`, a horizontal bar chart with a dr
 
 Each sample is also displayed with a bubble chart.
 
-![image](https://user-images.githubusercontent.com/69134400/119413641-e35a4580-bca2-11eb-8abc-a32cc42fe0fc.png)
+![image](https://user-images.githubusercontent.com/69134400/119415141-e145b600-bca5-11eb-85ec-c5dcabdee35b.png)
