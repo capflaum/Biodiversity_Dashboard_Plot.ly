@@ -1,14 +1,24 @@
+function buildMetadata(sample) {
+    d3.json('./samples.json').then(function(sampleData){
+        var metadata = sampleData.metadata;
 
-// d3.json("samples.json").then(function(sampleData){
-//     var samples = sampleData.samples;
-//         Object.entries(samples).forEach(([d, i]) => {
-//             var topIds = i.id;
-//             var topOtus = i.otu_ids;
-//             console.log(topOtus);
-//             });
-//         });
+        var resultArray = metadata.filter(sampleObj => sampleObj.id == sample);
+        var result = resultArray[0];
+        console.log(result);
 
-function buildPlot() {
+        var PANEL = d3.select('#sample-metadata');
+
+        PANEL.html("")
+        
+        Object.entries(result).forEach(([key,value]) => {
+            PANEL.append("h6").text(`${key.toUpperCase()}: ${value}`);
+        });
+
+        buildGauge(result.wfreq);
+    });
+}
+
+function buildPlot(sample) {
     d3.json(`./samples.json`).then(function(sampleData){
         var samples = sampleData.samples;
         values = [];
@@ -22,9 +32,7 @@ function buildPlot() {
             values.push(value);
             var otuLabels = tenSamples.otu_labels[i];
             hovertext.push(otuLabels);
-            // console.log(tenSamples);
-            // console.log(otuIds);
-            // console.log(labels);
+        console.log(tenSamples);
         };
 
     var trace1 = {
@@ -56,7 +64,7 @@ function nameInput() {
     d3.json(`./samples.json`).then(function(sampleData){
         var names = sampleData.names;
         var menu = d3.selectAll("#selDataset");
-        //names.map(function(option){
+
         for (i = 0; i < names.length; i++) {
             menu.append("option").text(names[i]).property("value", names[i]);
         };
