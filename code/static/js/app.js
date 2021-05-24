@@ -25,11 +25,11 @@ function buildPlots(sample) {
         var resultArray = samples.filter(sampleObj => sampleObj.id == sample);
         var result = resultArray[0];
         
-        console.log(result);
+        //console.log(result);
 
-        var otu_ids = result.otu_ids;
-        var otu_labels = result.otu_labels;
-        var otu_values = result.sample_values;
+        var otu_ids = result.otu_ids.slice(0, 10);
+        var otu_labels = result.otu_labels.slice(0, 10);
+        var otu_values = result.sample_values.slice(0, 10);
 
         // Incorrect
         // for(i=0; i<10; i++){
@@ -45,20 +45,20 @@ function buildPlots(sample) {
 
         //     var otuLabels = tenSamples.otu_labels[i];
         //     hovertext.push(otuLabels);
-        console.log(otu_ids)
-    var yticks = otu_ids.slice(0, 10).map(otuIds => `OTU ${otuIds}`).reverse();
+        
+        // console.log(otu_ids);
+
     var trace1 = {
-        y: yticks,
-        x: otu_values.slice(0, 10).reverse(),
-        hovertext: otu_labels.slice(0, 10).reverse(),
+        y: otu_ids.map(otuIds => `OTU ${otuIds}`).reverse(),
+        x: otu_values.reverse(),
+        hovertext: otu_labels.reverse(),
 
         type: "bar",
         orientation: "h",
         name: "Top 10 OTUs",
     };
-
     var data = [trace1];
-    console.log(data);
+
     var layout = {
         autosize: true,
         title: "Top 10 OTUs",
@@ -81,8 +81,9 @@ function buildPlots(sample) {
           text: otu_labels,
           mode: "markers",
           marker: {
-            size: otu_values,
             color: otu_ids,
+            size: otu_values,
+            
           }
         }
       ];
