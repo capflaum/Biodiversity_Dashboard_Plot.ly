@@ -8,7 +8,7 @@ The dataset reveals that a small handful of microbial species (also called opera
 
 The demographic data on test subjects is read and featured in a panel along with their corresponding key-value data pairs. The data for a particular subject can be viewed by selecting the desired Test Subject ID from the dropdown menu. This event change will provide the correct data in the panel as well as change the other visualizations to represent the selected data. 
 
-![image](https://user-images.githubusercontent.com/69134400/119420245-de03f780-bcb0-11eb-82e7-69778456727a.png)![image](https://user-images.githubusercontent.com/69134400/119420248-e3614200-bcb0-11eb-9a0f-36dba1b4962f.png)
+![image](https://user-images.githubusercontent.com/69134400/119420245-de03f780-bcb0-11eb-82e7-69778456727a.png) ![image](https://user-images.githubusercontent.com/69134400/119420248-e3614200-bcb0-11eb-9a0f-36dba1b4962f.png)
 
 
 ## Bar Chart
