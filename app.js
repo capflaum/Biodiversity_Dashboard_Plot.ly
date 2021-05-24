@@ -1,6 +1,6 @@
 function buildMetadata(sample) {
-    d3.json("data/samples.json").then((data) => {
-      var metadata = data.metadata;
+    d3.json("data/samples.json").then((sampleData) => {
+      var metadata = sampleData.metadata;
 
       var resultArray = metadata.filter(sampleObj => sampleObj.id == sample);
       var result = resultArray[0];
