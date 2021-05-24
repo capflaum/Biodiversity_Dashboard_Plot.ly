@@ -24,7 +24,6 @@ function buildPlots(sample) {
         var samples = sampleData.samples;
         var resultArray = samples.filter(sampleObj => sampleObj.id == sample);
         var result = resultArray[0];
-        
         //console.log(result);
 
         var otu_ids = result.otu_ids.slice(0, 10);
@@ -68,13 +67,6 @@ function buildPlots(sample) {
     Plotly.newPlot("bar", data, layout);
 
 // Bubble chart:
-    var bubbleLayout = {
-        title: "Bacteria Cultures Per Sample",
-        margin: { t: 0 },
-        hovermode: "closest",
-        xaxis: { title: "OTU ID" },
-        margin: { t: 30}
-      };
       var bubbleData = [
         {
           x: otu_ids,
@@ -83,39 +75,18 @@ function buildPlots(sample) {
           mode: "markers",
           marker: {
             color: otu_ids,
-            size: otu_values,
-            
+            size: otu_values
           }
         }
       ];
+      var bubbleLayout = {
+        title: "OTUs Per Sample",
+        xaxis: { title: "OTU ID" },
+      };
   
       Plotly.newPlot("bubble", bubbleData, bubbleLayout);
     });
 };
-
-// Incorrect:
-// Event Changing
-// d3.select("#selDataset").on("change", nameInput);
-
-// function nameInput() {
-//     d3.json(`./samples.json`).then(function(sampleData){
-//         var names = sampleData.names;
-//         var menu = d3.selectAll("#selDataset");
-
-//         for (i = 0; i < names.length; i++) {
-//             menu.append("option").text(names[i]).property("value", names[i]);
-//         };
-//         const firstOtu = names[0];
-//         buildPlots(firstOtu);
-//     });
-// };
-// nameInput();
-
-// d3.select("#selDataset").on("change", updatePlotly);
-
-// function updatePlotly() {
-
-// }
 
 function init() {
     var selector = d3.select("#selDataset");
@@ -143,4 +114,25 @@ function init() {
 
   init();
   
+// Incorrect:
+// Event Changing
+// d3.select("#selDataset").on("change", nameInput);
 
+// function nameInput() {
+//     d3.json(`./samples.json`).then(function(sampleData){
+//         var names = sampleData.names;
+//         var menu = d3.selectAll("#selDataset");
+
+//         for (i = 0; i < names.length; i++) {
+//             menu.append("option").text(names[i]).property("value", names[i]);
+//         };
+//         const firstOtu = names[0];
+//         buildPlots(firstOtu);
+//     });
+// };
+// nameInput();
+
+// d3.select("#selDataset").on("change", updatePlotly);
+
+// function updatePlotly() {
+// }
