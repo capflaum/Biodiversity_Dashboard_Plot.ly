@@ -1,5 +1,5 @@
 function buildMetadata(sample) {
-    d3.json("./samples.json").then((data) => {
+    d3.json("data/samples.json").then((data) => {
       var metadata = data.metadata;
 
       var resultArray = metadata.filter(sampleObj => sampleObj.id == sample);
@@ -20,7 +20,7 @@ function buildMetadata(sample) {
 
 
 function buildPlots(sample) {
-    d3.json("./samples.json").then((sampleData) => {
+    d3.json("data/samples.json").then((sampleData) => {
         var samples = sampleData.samples;
         var resultArray = samples.filter(sampleObj => sampleObj.id == sample);
         var result = resultArray[0];
@@ -120,7 +120,7 @@ function buildPlots(sample) {
 function init() {
     var selector = d3.select("#selDataset");
   
-    d3.json("samples.json").then((sampleData) => {
+    d3.json("data/samples.json").then((sampleData) => {
       var sampleNames = sampleData.names;
   
       sampleNames.forEach((sample) => {
