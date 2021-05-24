@@ -48,8 +48,9 @@ function buildPlots(sample) {
         
         // console.log(otu_ids);
 
+// Bar chart:
     var trace1 = {
-        y: otu_ids.map(otuIds => `OTU ${otuIds}`).reverse(),
+        y: otu_ids.map(otu_ids => `OTU ${otu_ids}`).reverse(),
         x: otu_values.reverse(),
         hovertext: otu_labels.reverse(),
 
@@ -66,7 +67,7 @@ function buildPlots(sample) {
 
     Plotly.newPlot("bar", data, layout);
 
-    // Build a Bubble Chart
+// Bubble chart:
     var bubbleLayout = {
         title: "Bacteria Cultures Per Sample",
         margin: { t: 0 },
@@ -91,6 +92,8 @@ function buildPlots(sample) {
       Plotly.newPlot("bubble", bubbleData, bubbleLayout);
     });
 };
+
+// Incorrect:
 // Event Changing
 // d3.select("#selDataset").on("change", nameInput);
 
@@ -115,10 +118,8 @@ function buildPlots(sample) {
 // }
 
 function init() {
-    // Grab a reference to the dropdown select element
     var selector = d3.select("#selDataset");
   
-    // Use the list of sample names to populate the select options
     d3.json("samples.json").then((sampleData) => {
       var sampleNames = sampleData.names;
   
@@ -129,7 +130,6 @@ function init() {
           .property("value", sample);
       });
   
-      // Use the first sample from the list to build the initial plots
       var firstSample = sampleNames[0];
       buildPlots(firstSample);
       buildMetadata(firstSample);
@@ -137,7 +137,6 @@ function init() {
   }
   
   function optionChanged(newSample) {
-    // Fetch new data each time a new sample is selected
     buildPlots(newSample);
     buildMetadata(newSample);
   }
