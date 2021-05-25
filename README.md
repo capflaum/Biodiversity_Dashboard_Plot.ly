@@ -13,15 +13,14 @@ The demographic data on test subjects is read and featured in a panel along with
 
 ![image](https://user-images.githubusercontent.com/69134400/119420245-de03f780-bcb0-11eb-82e7-69778456727a.png) ![image](https://user-images.githubusercontent.com/69134400/119420248-e3614200-bcb0-11eb-9a0f-36dba1b4962f.png)
 
-
 ## Bar Chart
 
-Using the D3 library to read in "samples.json", a horizontal bar chart is created to display the top 10 OTUs found in that individual.
+Using the D3 library to read in "samples.json", a horizontal bar chart is created to display the top 10 OTUs found in that individual. In this image, the demographic data and visualization is provided for the selected ID: 945.
 
 ![image](https://user-images.githubusercontent.com/69134400/119420559-9fbb0800-bcb1-11eb-8648-09254764587c.png)
 
 ## Bubble Chart
 
-Each sample is also displayed with a bubble chart.
+Each selected sample is also displayed with a bubble chart.
 
 ![image](https://user-images.githubusercontent.com/69134400/119420426-54a0f500-bcb1-11eb-9106-f17960c7e9bd.png)
