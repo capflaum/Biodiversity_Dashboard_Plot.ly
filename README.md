@@ -18,8 +18,7 @@ The demographic data on test subjects is read and featured in a panel along with
 
 Using the D3 library to read in "samples.json", a horizontal bar chart is created to display the top 10 OTUs found in that individual.
 
-![image](https://user-images.githubusercontent.com/69134400/119413564-b312a700-bca2-11eb-8518-1b98b3fd23f4.png)
-
+![image](https://user-images.githubusercontent.com/69134400/119420559-9fbb0800-bcb1-11eb-8648-09254764587c.png)
 
 ## Bubble Chart
 
